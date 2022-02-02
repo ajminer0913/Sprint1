@@ -1,24 +1,34 @@
-
-/**
- * Program to perform CRUD (Create, Read, Update, Destroy) operations on excel/csv files
- *
- * @authors Sparkling Barracudas
- */
-
 import java.io.*;
 import java.util.Scanner;
 
-public class Crud {
+public class AidenMiner_inventory {
 
-    public static void main(String[] args) {
+    //Creates File
+    static final String fileName = "inventory_team3.txt";
+    static File inventory = new File(fileName);
 
+    public static void main(String[] args) throws FileNotFoundException{
+        read();
     }
 
-    public void create() {
-
+    public void create(){
+        
     }
 
-    public void read() {
+////////////////////
+/* Reads every Line 
+in Text File*/
+////////////////////
+
+    public static void read() throws FileNotFoundException{
+    
+      Scanner scan = new Scanner(inventory);
+      
+      while(scan.hasNextLine()) {
+          
+         String nextLine = scan.nextLine();
+         
+      }
 
     }
 
