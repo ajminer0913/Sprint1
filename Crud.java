@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class AidenMiner_inventory {
+public class Crud {
 
     //Creates File
     static final String fileName = "inventory_team3.txt";
