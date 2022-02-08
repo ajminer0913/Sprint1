@@ -30,10 +30,10 @@ public class Crud {
     }
 
     /**
- * Method to create new entry on CSV file.
- * Gets user input and adds data to new line.
- * 
- */
+    * Method to create new entry on CSV file.
+    * Gets user input and adds data to new line.
+    * 
+    */
     public static void create(String fileName) throws IOException{
                  
         Scanner sc = new Scanner(System.in);
