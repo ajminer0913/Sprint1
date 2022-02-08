@@ -1,43 +1,46 @@
-import java.io.*;
-import java.util.Scanner;
-
-public class Crud {
-
-    //Creates File
-    static final String fileName = "inventory_team3.txt";
-    static File inventory = new File(fileName);
-
-    public static void main(String[] args) throws FileNotFoundException{
-        read();
-    }
-
-    public void create(){
+/**
+ * Method to create new entry on CSV file.
+ * Gets user input and adds data to new line.
+ * 
+ */
+    public static void create(String fileName) throws IOException{
+                 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Input Product ID: ");
+        String id = sc.nextInt();
+        System.out.println("Input Quantity: ");
+        String quantity = sc.nextLine();
+        System.out.println("Input Wholesale Price: ");
+        String wholesale = sc.nextDouble();
+        System.out.println("Input Sales Price: ");
+        String salesPrice = sc.nextDouble();
+        System.out.println("Input Supplier ID: ");
+        String supplierId = sc.nextLine();
         
-    }
-
-////////////////////
-/* Reads every Line 
-in Text File*/
-////////////////////
-
-    public static void read() throws FileNotFoundException{
-    
-      Scanner scan = new Scanner(inventory);
-      
-      while(scan.hasNextLine()) {
-          
-         String nextLine = scan.nextLine();
-         
-      }
-
-    }
-
-    public void update() {
-
-    }
-
-    public void delete() {
-
-    }
-
-}
+        try{
+        
+          FileWriter writer = new FileWriter(fileName, true);
+          writer.append(id);
+          writer.append(",");
+          writer.append(quantity);
+          writer.append(",");
+          writer.append(wholesale);
+          writer.append(",");
+          writer.append(salesPrice);
+          writer.append(",");
+          writer.append(supplierId);
+          writer.append('\n');
+        
+          writer.close();
+        
+        }
+        
+        catch(IOException writer){
+        
+           System.out.println("IOExcpetion, data maybe incorrect");
+        
+        }
+        
+        sc.close();
+        
+   }
