@@ -32,7 +32,8 @@ public class Crud {
     /**
     * Method to create new entry on CSV file.
     * Gets user input and adds data to new line.
-    * 
+    * @ThrowsIOException
+    *@Param fileName
     */
     public static void create(String fileName) throws IOException{
                  
@@ -51,18 +52,18 @@ public class Crud {
         try{
         
           FileWriter writer = new FileWriter(fileName, true);
-          writer.append(id);
-          writer.append(",");
-          writer.append(quantity);
-          writer.append(",");
-          writer.append(wholesale);
-          writer.append(",");
-          writer.append(salesPrice);
-          writer.append(",");
-          writer.append(supplierId);
-          writer.append('\n');
-        
-          writer.close();
+
+            writer.append(id);
+            writer.append(",");
+            writer.append(quantity);
+            writer.append(",");
+            writer.append(wholesale);
+            writer.append(",");
+            writer.append(salesPrice);
+            writer.append(",");
+            writer.append(supplierId);
+            writer.append('\n');
+            writer.close();
         
         }
         
@@ -76,8 +77,51 @@ public class Crud {
         
    }
 
-    public void read() {
+    /**
+    *Read method takes product Id as input, uses reader objects to 
+    *find product Id and print out row
+    *@throws FileNotFoundException and IOException
+    *@Param: fileName
+    */
+    public static void read(String fileName) throws FileNotFoundException, IOException {
+
+        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        int dataFound = 0;
+        System.out.println("Input Product ID: ");
+        String productId = sc.nextLine();
+        String[] row = new String[5];
+        String line;
+    
+        while ((line = br.readLine()) != null){
+         
+            row = line.split(",");
+        
+            if (row[0].equals(productId)){
+
+                for (int x = 0; x < 5; x += 1){
+            
+                    System.out.print(row[x] + " ");
+
+                }
+            
+                dataFound = 1;
+
+            }
+        
+        }
+    
+        if (dataFound == 0){
+    
+            System.out.println("Data Not Found");
+    
+        }
+    
+        br.close();
+
     }
+
+
 
     public void update() {
     }
